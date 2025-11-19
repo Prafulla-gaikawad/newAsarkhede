@@ -1,28 +1,29 @@
-import { useState } from 'react';
+import { useState } from "react";
+import logo from "../images/logo.png";
 
 const Navigation = ({ onOpenComplaint }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: 'होम', link: '#home' },
-    { label: 'आमच्याबद्दल', link: '#about' },
-    { label: 'न्युज/अपडेट्स', link: '#news' },
-    { label: 'पुरस्कार / यशोगाथा', link: '#awards' },
-    { label: 'पर्यटन स्थळ', link: '#tourism' },
-    { label: 'फोटो गॅलरी', link: '#gallery' },
+    { label: "होम", link: "#home" },
+    { label: "आमच्याबद्दल", link: "#about" },
+    { label: "न्युज/अपडेट्स", link: "#news" },
+    { label: "पुरस्कार / यशोगाथा", link: "#awards" },
+    { label: "पर्यटन स्थळ", link: "#tourism" },
+    { label: "फोटो गॅलरी", link: "#gallery" },
     {
-      label: 'इतर',
+      label: "इतर",
       submenu: [
-        { label: 'मंदिर', link: '#temple' },
+        { label: "मंदिर", link: "#temple" },
         // { label: 'आरोग्य दवाखाने', link: '#health' },
-        { label: 'शाळा', link: '#school' },
+        { label: "शाळा", link: "#school" },
         // { label: 'शेती', link: '#agriculture' },
         // { label: 'सूचना फलक', link: '#notice' },
-        { label: 'गावाची माहिती', link: '#village-info' },
+        { label: "गावाची माहिती", link: "#village-info" },
         // { label: 'पशुवैद्यकीय दवाखाने', link: '#veterinary' },
         // { label: 'बचत गट माहिती', link: '#savings-group' },
         // { label: 'लोकप्रिय योजना', link: '#schemes' },
-        { label: 'Admin', link: '#admin-login' },
+        { label: "Admin", link: "#admin-login" },
       ],
     },
     // { label: 'संपर्क साधा', link: '#contact' },
@@ -35,26 +36,48 @@ const Navigation = ({ onOpenComplaint }) => {
           {/* Left Side - Logo and Village Name */}
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-teal-600 to-teal-800 rounded-full flex items-center justify-center shadow-md">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
-              </svg>
+              <img
+                src={logo}
+                alt="शिंदे ग्रामपंचायत लोगो"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="text-lg md:text-xl font-bold text-gray-800">
-              आसारखेडे ग्रामपंचायत
+            <div className="flex flex-col">
+              <div className="text-lg md:text-xl font-bold text-gray-800 group-hover:text-teal-700 transition-colors duration-300">
+                आसारखेडे ग्रामपंचायत
+              </div>
+              <div className="text-xs md:text-sm text-gray-600 font-medium">
+                गाव At/Post-आसारखेडे , तालुका-चांदवड, जिल्हा-नाशिक
+              </div>
             </div>
           </div>
-          
+
           {/* Mobile menu button */}
           <button
             className="md:hidden text-gray-700 focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -65,7 +88,7 @@ const Navigation = ({ onOpenComplaint }) => {
               {menuItems.map((item, index) => (
                 <li key={index} className="relative group">
                   <a
-                    href={item.link || '#'}
+                    href={item.link || "#"}
                     className="text-gray-700 hover:text-teal-600 transition py-2 block text-sm font-medium"
                   >
                     {item.label}
@@ -87,15 +110,25 @@ const Navigation = ({ onOpenComplaint }) => {
                 </li>
               ))}
             </ul>
-            
+
             {/* Complaint Button */}
             <button
               onClick={onOpenComplaint}
               className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md flex items-center gap-2 transition text-sm font-medium"
             >
               <span>तक्रार नोंदवा</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
@@ -108,7 +141,7 @@ const Navigation = ({ onOpenComplaint }) => {
               {menuItems.map((item, index) => (
                 <li key={index}>
                   <a
-                    href={item.link || '#'}
+                    href={item.link || "#"}
                     className="block py-2 text-gray-700 hover:text-teal-600 transition"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -140,8 +173,18 @@ const Navigation = ({ onOpenComplaint }) => {
               className="w-full mt-4 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2 transition"
             >
               <span>तक्रार नोंदवा</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
